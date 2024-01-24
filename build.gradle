@@ -1,0 +1,42 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+ext {
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    lombokVersion = "1.18.30"
+}
+
+dependencies {
+    implementation libs.commons.cli.commons.cli
+    implementation libs.org.xerial.sqlite.jdbc
+    implementation libs.net.java.dev.jna.jna.platform
+    implementation libs.commons.codec.commons.codec
+    implementation libs.org.apache.maven.shared.maven.shared.utils
+    implementation libs.com.fasterxml.jackson.core.jackson.databind
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    implementation "org.dreamcat:common:0.4"
+}
+
+group = 'org.dreamcat'
+version = '0.0.1-SNAPSHOT'
+description = 'Cookie Monster'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.dreamcat.cmonster.CookieMonster'
+    }
+}
+
+apply from: new File(rootDir, 'publish.gradle')
+apply from: new File(rootDir, 'tasks.gradle')
