@@ -27,9 +27,8 @@ dependencies {
     implementation "org.dreamcat:common:0.4"
 }
 
-group = 'org.dreamcat'
-version = '0.0.1-SNAPSHOT'
-description = 'Cookie Monster'
+group = GROUP_ID
+version = VERSION
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 jar {
