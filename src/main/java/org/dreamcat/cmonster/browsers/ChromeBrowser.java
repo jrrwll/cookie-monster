@@ -60,6 +60,10 @@ public class ChromeBrowser extends Browser {
         );
     }
 
+    public String getMacKeyringName() {
+        return "Chrome Safe Storage";
+    }
+
     private String chromeKeyringPassword = null;
 	private byte[] windowsMasterKey;
 
@@ -331,7 +335,7 @@ public class ChromeBrowser extends Browser {
         } else if (SystemUtil.isMac()) {
             // access the decryption password from the keyring manager
             if (chromeKeyringPassword == null) try {
-                chromeKeyringPassword = getMacKeyringPassword("Chrome Safe Storage");
+                chromeKeyringPassword = getMacKeyringPassword(getMacKeyringName());
             } catch (IOException ignored) {
             }
             try {

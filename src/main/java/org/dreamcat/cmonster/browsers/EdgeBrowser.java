@@ -14,12 +14,17 @@ public class EdgeBrowser extends ChromeBrowser {
         return "Edge";
     }
 
-    // todo support linux
+    // todo support linux/windows
     @Override
     public List<String> getCookieDirectories() {
         return Arrays.asList(
                 "/AppData/Local/Microsoft/Edge/User Data",
                 "/Library/Application Support/Microsoft Edge"
         );
+    }
+
+    @Override
+    public String getMacKeyringName() {
+        return "Microsoft Edge Safe Storage";
     }
 }
